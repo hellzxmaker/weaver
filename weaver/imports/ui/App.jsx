@@ -6,6 +6,7 @@ import { Experiences } from '../api/experiences.js';
 import { MuiThemeProvider } from 'material-ui';
 import NavBar from './NavBar.jsx';
 import Experience from './Experience.jsx';
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 // App component - represents the whole app
 class App extends Component {
@@ -33,6 +34,9 @@ class App extends Component {
     <div id="main">
       <div id="app-component">
         { this.renderNavBar() }
+      </div>
+      <div>
+        <AccountsUIWrapper/>
       </div>
       <div>
         <ul>
