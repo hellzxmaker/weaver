@@ -18,9 +18,9 @@ export default class CreateExperienceDialog extends Component {
 
     this.state = {
       showNewExperienceDialog: true,
-      newExperienceTitle: '',
-      newExperienceDescription: '',
-      newExperienceJobTitle: '',
+      newExperienceName: '',
+      newExperienceMetric: '',
+      newExperienceValue: '',
     };
   }
 
@@ -28,14 +28,14 @@ export default class CreateExperienceDialog extends Component {
     event.preventDefault();
 
     // Find the text field via the React ref
-    const title = this.state.newExperienceTitle;
-    const description = this.state.newExperienceDescription;
-    const job_title = this.state.newExperienceJobTitle;
+    const name = this.state.newExperienceName;
+    const metric = this.state.newExperienceMetric;
+    const value = this.state.newExperienceValue;
 
     Experiences.insert({
-      title,
-      description,
-      job_title,
+      name,
+      metric,
+      value,
       createdAt: new Date(), // current time
     });
 
@@ -72,12 +72,12 @@ export default class CreateExperienceDialog extends Component {
         onRequestClose={ this.toggleNewExperienceDialog.bind(this) }
         onSubmit={ this.handleSubmit.bind(this), this.toggleNewExperienceDialog.bind(this) }
       >
-        To help you track your successes, we need a short task description:
+        To help you track your successes, we need a short task name:
         <p></p>
         <TextField
            hintText="Enter the task here..."
-           value={ this.state.newExperienceTitle }
-           onChange={ e => this.setState({ newExperienceTitle: e.target.value })}
+           value={ this.state.newExperienceName }
+           onChange={ e => this.setState({ newExperienceName: e.target.value })}
            onSubmit={ this.toggleNewExperienceDialog.bind(this) }
         />
         <p></p>
@@ -86,8 +86,8 @@ export default class CreateExperienceDialog extends Component {
         <p></p>
         <TextField
           hintText="metric"
-          value={ this.state.newExperienceJobTitle }
-          onChange={ e => this.setState({ newExperienceJobTitle: e.target.value })}
+          value={ this.state.newExperienceMetric }
+          onChange={ e => this.setState({ newExperienceMetric: e.target.value })}
           onSubmit={ this.toggleNewExperienceDialog.bind(this) }
         />
         <p></p>
@@ -95,8 +95,8 @@ export default class CreateExperienceDialog extends Component {
         <p></p>
         <TextField
           hintText="initial metric value"
-          value={ this.state.newExperienceDescription }
-          onChange={ e => this.setState({ newExperienceDescription: e.target.value })}
+          value={ this.state.newExperienceValue }
+          onChange={ e => this.setState({ newExperienceValue: e.target.value })}
           onSubmit={ this.toggleNewExperienceDialog.bind(this) }
         />
       </Dialog>

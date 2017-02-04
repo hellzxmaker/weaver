@@ -21,13 +21,13 @@ export default class Experience extends Component {
       <MuiThemeProvider>
         <Card>
           <CardHeader
-            title={ this.props.experience.title }
+            title={ this.props.experience.name }
             subtitle={ this.props.experience.metric }
             actAsExpander={ true }
             showExpandableButton={ true }
           />
           <CardText expandable={ true }>
-            { this.props.experience.description + " " + this.props.experience.metric }
+            { this.props.experience.value + " " + this.props.experience.metric }
           </CardText>
           <CardActions expandable={ true } >
               <FlatButton label="Delete" onTouchTap={ this.deleteExperience.bind(this) } />
