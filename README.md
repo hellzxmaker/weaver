@@ -1,13 +1,13 @@
 # Project Weaver
 
 Prereqs:
-- meteor installed
+- meteor installed (see Meteor's official website https://www.meteor.com/install)
 
 Installation:
 - Mac
--- Pull the repo
--- Run 'meteor npm install' on weaver/
--- Run 'meteor' on weaver/
+ 1. Clone the repo
+ 2. Run 'meteor npm install' on weaver/
+ 3. Run 'meteor' on weaver/
 
 View:
 - To view the application, go to localhost
