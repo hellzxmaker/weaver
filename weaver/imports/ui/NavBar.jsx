@@ -21,6 +21,7 @@ export default class NavBar extends Component {
   }
 
   toggleNewExperienceDialog() {
+    console.log('toggleNewExperienceDialog');
     this.setState({
       showNewExperienceDialog: !this.state.showNewExperienceDialog,
     });
@@ -61,7 +62,9 @@ export default class NavBar extends Component {
           />
         </div>
         <div id="create-new-experience-dialog">
-          <CreateExperienceDialog open={ this.state.showNewExperienceDialog } />
+          <CreateExperienceDialog
+            open={ this.state.showNewExperienceDialog }
+         />
         </div>
       </div>
     );
@@ -77,7 +80,7 @@ export default class NavBar extends Component {
                     }
                     iconElementLeft={
                       <IconMenu
-                        iconButtonElement={<IconButton><Menu color="000000" /></IconButton>}
+                        iconButtonElement={<IconButton><Menu/></IconButton>}
                         anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
                         targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
                         onTouchTap={ this.toggleMenuDialog.bind(this) }
