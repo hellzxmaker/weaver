@@ -101,17 +101,7 @@ export default class CreateExperienceDialog extends Component {
             onRequestClose={ this.toggleNewExperienceDialog.bind(this) }
             onSubmit={ this.handleSubmit.bind(this), this.toggleNewExperienceDialog.bind(this) }
           >
-            To help you track your successes, we need a short experience name:
-            <p></p>
-            <TextField
-               hintText="Enter the experience here..."
-               value={ this.state.newExperienceName }
-               onChange={ e => this.setState({ newExperienceName: e.target.value })}
-               onSubmit={ this.toggleNewExperienceDialog.bind(this) }
-            />
-            <p></p>
-            the metric of importance ( Ex: hours, bugs filed, people managed, inventory
-            value in dollars, etc.)
+            What metric can we use to track your success?
             <p></p>
             <TextField
               hintText="metric (e.g. bugs, people managed, dollars)"
@@ -120,10 +110,10 @@ export default class CreateExperienceDialog extends Component {
               onSubmit={ this.toggleNewExperienceDialog.bind(this) }
             />
             <p></p>
-            initial value of that metric ( if you have already started )
+            Have you already started?
             <p></p>
             <TextField
-              hintText="initial metric value"
+              hintText="initial experience"
               value={ this.state.newExperienceValue }
               onChange={ e => this.setState({ newExperienceValue: e.target.value })}
               onSubmit={ this.toggleNewExperienceDialog.bind(this) }
@@ -143,7 +133,14 @@ export default class CreateExperienceDialog extends Component {
               onRequestClose={ this.toggleDifferentDialog.bind(this) }
               onSubmit={ this.handleSubmit.bind(this), this.toggleDifferentDialog.bind(this) }
             >
-              To help you keep track of your experience, we need learn more. Press the arrow to continue.
+              To help you keep track of your experience, we need learn more.
+
+              <TextField
+                 hintText="Enter the experience here..."
+                 value={ this.state.newExperienceName }
+                 onChange={ e => this.setState({ newExperienceName: e.target.value })}
+                 onSubmit={ this.toggleNewExperienceDialog.bind(this) }
+              />
             </Dialog>
           </div>
         );
