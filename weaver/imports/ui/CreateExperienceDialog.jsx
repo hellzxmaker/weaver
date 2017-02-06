@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import { Meteor } from 'meteor/meteor';
+
 import { MuiThemeProvider } from 'material-ui';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -38,6 +40,8 @@ export default class CreateExperienceDialog extends Component {
       metric,
       value,
       createdAt: new Date(), // current time
+      owner: Meteor.userId(), // _id of logged in user
+      email: Meteor.user().emails[0].address, // email address of the user
     });
 
     this.closeMenus();
@@ -51,14 +55,12 @@ export default class CreateExperienceDialog extends Component {
   }
 
   toggleNewExperienceDialog() {
-    console.log('toggleNewExperienceDialog');
     this.setState({
       showNewExperienceDialog: !this.state.showNewExperienceDialog,
     });
   }
 
   toggleDifferentDialog() {
-    console.log('toggleDifferentDialog');
     if (this.state.showDifferentDialog == false) {
       this.setState({
         showDifferentDialog: !this.state.showDifferentDialog,

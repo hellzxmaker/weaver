@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import { Meteor } from 'meteor/meteor';
+
+
 import { Experiences } from '../api/experiences.js';
 
 import { MuiThemeProvider } from 'material-ui';
@@ -16,7 +19,13 @@ class App extends Component {
   }
 
   renderExperiences() {
-    return this.props.experiences.map(( experience ) => (
+    let filteredExperiences = this.props.experiences;
+    if (null != Meteor.user()) {
+      filteredExperiences = filteredExperiences.filter(experience => experience.email == Meteor.user().emails[0].address );
+    } else {
+      return '';
+    }
+    return filteredExperiences.map(( experience ) => (
       <Experience key={ experience._id } experience={ experience } />
     ));
   }
@@ -40,7 +49,7 @@ class App extends Component {
       </div>
       <div>
         <ul>
-          { this.renderExperiences() }
+          { this.props.currentUser ? this.renderExperiences() : '' }
         </ul>
       </div>
     </div>
@@ -50,10 +59,12 @@ class App extends Component {
 
 App.propTypes = {
   experiences: PropTypes.array.isRequired,
+  currentUser: PropTypes.object,
 };
 
 export default createContainer(() => {
   return {
     experiences: Experiences.find({}, { sort: { createdAt: -1 } }).fetch(),
+    currentUser: Meteor.user(),
   };
 }, App);
