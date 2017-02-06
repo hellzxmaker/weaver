@@ -94,7 +94,7 @@ export default class CreateExperienceDialog extends Component {
         <div>
           <MuiThemeProvider>
           <Dialog
-            title="What about this experience is important?"
+            title="Experience Details?"
             actions={ this.getAddDataActions() }
             modal={ false }
             open={ this.state.showNewExperienceDialog }
@@ -126,17 +126,17 @@ export default class CreateExperienceDialog extends Component {
         return (
             <div>
             <Dialog
-              title="Let's add some experience..."
+              title="Let's add an experience"
               actions={ this.getInitalPageActions() }
               modal={ false }
               open={ this.state.showIntroDialog }
               onRequestClose={ this.toggleIntroDialog.bind(this) }
               onSubmit={ this.handleSubmit.bind(this), this.toggleIntroDialog.bind(this) }
             >
-              To help you keep track of your experience, we need learn more.
+              What can we call your experience?
               <p></p>
               <TextField
-                 hintText="Enter the experience here..."
+                 hintText="Ex: Cisco Systems Admin"
                  value={ this.state.newExperienceName }
                  onChange={ e => this.setState({ newExperienceName: e.target.value })}
                  onSubmit={ this.toggleNewExperienceDialog.bind(this) }
