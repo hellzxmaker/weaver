@@ -18,16 +18,9 @@ export default class NavBar extends Component {
     super(props);
 
     this.state = {
-      logged: false,
       showNewExperienceDialog: false,
       showMenuDialog: false,
     };
-  }
-
-  toggleLogged() {
-    this.setState({
-      logged: !this.state.logged,
-    });
   }
 
   toggleNewExperienceDialog() {
@@ -60,7 +53,7 @@ export default class NavBar extends Component {
   }
 
   renderRightIconButton() {
-    if ( this.state.logged ) {
+    if ( null != Meteor.user() ) {
       return (
         <IconButton
           label="New Experience"
@@ -75,7 +68,6 @@ export default class NavBar extends Component {
           label="Login"
           labelPosition="before"
           primary={ true }
-          onTouchTap={ this.toggleLogged.bind(this) }
           icon={ <Person /> }
         />
       );
