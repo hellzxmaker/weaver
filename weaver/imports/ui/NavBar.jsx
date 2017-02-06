@@ -39,8 +39,8 @@ export default class NavBar extends Component {
     return (
       <IconMenu
         iconButtonElement={<IconButton><Menu/></IconButton>}
-        anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
-        targetOrigin={{horizontal: 'right', vertical: 'bottom'}}
+        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+        targetOrigin={{horizontal: 'left', vertical: 'top'}}
         onTouchTap={ this.toggleMenuDialog.bind(this) }
       >
         <MenuItem primaryText="Refresh" />

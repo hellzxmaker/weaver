@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Meteor } from 'meteor/meteor';
 
 import { MuiThemeProvider } from 'material-ui';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
@@ -13,7 +14,7 @@ export default class Experience extends Component {
   }
 
   deleteExperience() {
-    Experiences.remove(this.props.experience._id);
+    Meteor.call('experiences.remove', this.props.experience._id);
   }
 
   renderExperienceCard() {

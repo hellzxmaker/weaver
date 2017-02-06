@@ -35,14 +35,7 @@ export default class CreateExperienceDialog extends Component {
     const metric = this.state.newExperienceMetric;
     const value = this.state.newExperienceValue;
 
-    Experiences.insert({
-      name,
-      metric,
-      value,
-      createdAt: new Date(), // current time
-      owner: Meteor.userId(), // _id of logged in user
-      email: Meteor.user().emails[0].address, // email address of the user
-    });
+    Meteor.call('experiences.insert', name, metric, value);
 
     this.closeMenus();
   }
