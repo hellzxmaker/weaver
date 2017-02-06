@@ -21,7 +21,7 @@ export default class CreateExperienceDialog extends Component {
 
     this.state = {
       showNewExperienceDialog: false,
-      showDifferentDialog: true,
+      showIntroDialog: true,
       newExperienceName: '',
       newExperienceMetric: '',
       newExperienceValue: '',
@@ -42,7 +42,7 @@ export default class CreateExperienceDialog extends Component {
 
   closeMenus() {
     this.setState({
-      showDifferentDialog: false,
+      showIntroDialog: false,
       showNewExperienceDialog: false,
     });
   }
@@ -53,15 +53,15 @@ export default class CreateExperienceDialog extends Component {
     });
   }
 
-  toggleDifferentDialog() {
-    if (this.state.showDifferentDialog == false) {
+  toggleIntroDialog() {
+    if (this.state.showIntroDialog == false) {
       this.setState({
-        showDifferentDialog: !this.state.showDifferentDialog,
+        showIntroDialog: !this.state.showIntroDialog,
         showNewExperienceDialog: false,
       });
     } else {
         this.setState({
-          showDifferentDialog: !this.state.showDifferentDialog,
+          showIntroDialog: !this.state.showIntroDialog,
         });
     }
   }
@@ -104,7 +104,7 @@ export default class CreateExperienceDialog extends Component {
             What metric can we use to track your success?
             <p></p>
             <TextField
-              hintText="metric (e.g. bugs, people managed, dollars)"
+              hintText="metric"
               value={ this.state.newExperienceMetric }
               onChange={ e => this.setState({ newExperienceMetric: e.target.value })}
               onSubmit={ this.toggleNewExperienceDialog.bind(this) }
@@ -129,12 +129,12 @@ export default class CreateExperienceDialog extends Component {
               title="Let's add some experience..."
               actions={ this.getInitalPageActions() }
               modal={ false }
-              open={ this.state.showDifferentDialog }
-              onRequestClose={ this.toggleDifferentDialog.bind(this) }
-              onSubmit={ this.handleSubmit.bind(this), this.toggleDifferentDialog.bind(this) }
+              open={ this.state.showIntroDialog }
+              onRequestClose={ this.toggleIntroDialog.bind(this) }
+              onSubmit={ this.handleSubmit.bind(this), this.toggleIntroDialog.bind(this) }
             >
               To help you keep track of your experience, we need learn more.
-
+              <p></p>
               <TextField
                  hintText="Enter the experience here..."
                  value={ this.state.newExperienceName }
