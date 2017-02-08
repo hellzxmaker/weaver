@@ -50,9 +50,9 @@ export default class LoginDialog extends Component {
       </FlatButton>,
       <FlatButton
         primary={ false }
-        onTouchTap={ this.logoutUser.bind(this) }
+        onTouchTap={ this.toggleLoginDialog.bind(this) }
       >
-        Logout
+        Cancel
       </FlatButton>,
     ];
   }

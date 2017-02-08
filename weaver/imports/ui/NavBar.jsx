@@ -80,6 +80,7 @@ export default class NavBar extends Component {
           labelPosition="before"
           primary={ true }
           icon={ <Person /> }
+          onTouchTap={ this.toggleLoginDialog.bind(this) }
         />
       );
     }
