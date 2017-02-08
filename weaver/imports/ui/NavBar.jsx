@@ -44,8 +44,7 @@ export default class NavBar extends Component {
 
   logoutUser() {
     this.toggleLoginDialog();
-    const userEmail = Meteor.user().emails[0].address;
-    Meteor.logout(userEmail);
+    Meteor.logout();
   }
 
   renderIconMenu() {

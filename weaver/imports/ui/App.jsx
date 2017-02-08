@@ -10,7 +10,6 @@ import { MuiThemeProvider } from 'material-ui';
 import Dialog from 'material-ui/Dialog';
 import NavBar from './NavBar.jsx';
 import Experience from './Experience.jsx';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 import LoginDialog from './LoginDialog.jsx';
 
 // App component - represents the whole app
