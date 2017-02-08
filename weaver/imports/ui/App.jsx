@@ -53,9 +53,6 @@ class App extends Component {
           { this.renderNavBar() }
         </div>
         <div>
-          { this.renderLoginDialog() }
-        </div>
-        <div>
           <ul>
             { this.props.currentUser ? this.renderExperiences() : '' }
           </ul>

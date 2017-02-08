@@ -25,6 +25,7 @@ export default class NavBar extends Component {
   }
 
   toggleNewExperienceDialog() {
+    console.log('NavBar: toggleNewExperienceDialog + : ' + this.state.showNewExperienceDialog);
     this.setState({
       showNewExperienceDialog: !this.state.showNewExperienceDialog,
     });
@@ -50,7 +51,7 @@ export default class NavBar extends Component {
   renderIconMenu() {
     return (
       <IconMenu
-        iconButtonElement={<IconButton><Menu color="white" /></IconButton>}
+        iconButtonElement={<IconButton touch={ true }><Menu color="white" /></IconButton>}
         anchorOrigin={ {horizontal: 'left', vertical: 'top'} }
         targetOrigin={ {horizontal: 'left', vertical: 'top'} }
         onTouchTap={ this.toggleMenuDialog.bind(this) }
@@ -68,6 +69,7 @@ export default class NavBar extends Component {
       return (
         <IconButton
           label="New Experience"
+          touch={ true }
           onTouchTap={ this.toggleNewExperienceDialog.bind(this) }
         >
           <Create/>
@@ -104,7 +106,7 @@ export default class NavBar extends Component {
   }
 
   renderNewExperienceDialog() {
-    if (this.state.showLoginDialog ) {
+    if ( this.state.showLoginDialog ) {
       return (
         <div>
           <div>

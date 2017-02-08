@@ -48,6 +48,7 @@ export default class CreateExperienceDialog extends Component {
   }
 
   toggleNewExperienceDialog() {
+    console.log('toggleNewExperienceDialog!')
     this.setState({
       showNewExperienceDialog: !this.state.showNewExperienceDialog,
     });
@@ -57,7 +58,6 @@ export default class CreateExperienceDialog extends Component {
     if (this.state.showIntroDialog == false) {
       this.setState({
         showIntroDialog: !this.state.showIntroDialog,
-        showNewExperienceDialog: false,
       });
     } else {
         this.setState({
@@ -98,8 +98,6 @@ export default class CreateExperienceDialog extends Component {
             actions={ this.getAddDataActions() }
             modal={ false }
             open={ this.state.showNewExperienceDialog }
-            onRequestClose={ this.toggleNewExperienceDialog.bind(this) }
-            onSubmit={ this.handleSubmit.bind(this), this.toggleNewExperienceDialog.bind(this) }
           >
             What metric can we use to track your success?
             <p></p>
@@ -108,7 +106,6 @@ export default class CreateExperienceDialog extends Component {
               errorText="This field is required"
               value={ this.state.newExperienceMetric }
               onChange={ e => this.setState({ newExperienceMetric: e.target.value })}
-              onSubmit={ this.toggleNewExperienceDialog.bind(this) }
             />
             <p></p>
             Have you already started?
@@ -117,7 +114,6 @@ export default class CreateExperienceDialog extends Component {
               hintText="initial experience"
               value={ this.state.newExperienceValue }
               onChange={ e => this.setState({ newExperienceValue: e.target.value })}
-              onSubmit={ this.toggleNewExperienceDialog.bind(this) }
             />
           </Dialog>
         </MuiThemeProvider>
@@ -132,7 +128,6 @@ export default class CreateExperienceDialog extends Component {
               modal={ false }
               open={ this.state.showIntroDialog }
               onRequestClose={ this.toggleIntroDialog.bind(this) }
-              onSubmit={ this.handleSubmit.bind(this), this.toggleIntroDialog.bind(this) }
             >
               What can we call your experience?
               <p></p>
@@ -141,7 +136,6 @@ export default class CreateExperienceDialog extends Component {
                  errorText="This field is required"
                  value={ this.state.newExperienceName }
                  onChange={ e => this.setState({ newExperienceName: e.target.value })}
-                 onSubmit={ this.toggleNewExperienceDialog.bind(this) }
               />
             </Dialog>
           </div>
