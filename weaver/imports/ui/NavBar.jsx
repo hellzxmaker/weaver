@@ -50,9 +50,9 @@ export default class NavBar extends Component {
   renderIconMenu() {
     return (
       <IconMenu
-        iconButtonElement={<IconButton><Menu/></IconButton>}
-        anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-        targetOrigin={{horizontal: 'left', vertical: 'top'}}
+        iconButtonElement={<IconButton><Menu color="white" /></IconButton>}
+        anchorOrigin={ {horizontal: 'left', vertical: 'top'} }
+        targetOrigin={ {horizontal: 'left', vertical: 'top'} }
         onTouchTap={ this.toggleMenuDialog.bind(this) }
       >
         <MenuItem primaryText="Manage Goals" />
