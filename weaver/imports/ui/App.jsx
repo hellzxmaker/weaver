@@ -7,15 +7,24 @@ import { Meteor } from 'meteor/meteor';
 import { Experiences } from '../api/experiences.js';
 
 import { MuiThemeProvider } from 'material-ui';
+import Dialog from 'material-ui/Dialog';
 import NavBar from './NavBar.jsx';
 import Experience from './Experience.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import LoginDialog from './LoginDialog.jsx';
 
 // App component - represents the whole app
 class App extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+
+  renderLoginDialog() {
+    return (
+      <LoginDialog/>
+    );
   }
 
   renderExperiences() {
@@ -40,19 +49,19 @@ class App extends Component {
 
   render() {
     return (
-    <div id="main">
-      <div id="app-component">
-        { this.renderNavBar() }
+      <div id="main">
+        <div id="app-component">
+          { this.renderNavBar() }
+        </div>
+        <div>
+          { this.renderLoginDialog() }
+        </div>
+        <div>
+          <ul>
+            { this.props.currentUser ? this.renderExperiences() : '' }
+          </ul>
+        </div>
       </div>
-      <div>
-        <AccountsUIWrapper/>
-      </div>
-      <div>
-        <ul>
-          { this.props.currentUser ? this.renderExperiences() : '' }
-        </ul>
-      </div>
-    </div>
     );
   }
 }

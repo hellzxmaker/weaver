@@ -5,7 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { MuiThemeProvider } from 'material-ui';
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+
 import Done from 'material-ui/svg-icons/action/done';
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 import Clear from 'material-ui/svg-icons/content/clear';
@@ -105,6 +105,7 @@ export default class CreateExperienceDialog extends Component {
             <p></p>
             <TextField
               hintText="metric"
+              errorText="This field is required"
               value={ this.state.newExperienceMetric }
               onChange={ e => this.setState({ newExperienceMetric: e.target.value })}
               onSubmit={ this.toggleNewExperienceDialog.bind(this) }
@@ -137,6 +138,7 @@ export default class CreateExperienceDialog extends Component {
               <p></p>
               <TextField
                  hintText="Ex: Cisco Systems Admin"
+                 errorText="This field is required"
                  value={ this.state.newExperienceName }
                  onChange={ e => this.setState({ newExperienceName: e.target.value })}
                  onSubmit={ this.toggleNewExperienceDialog.bind(this) }

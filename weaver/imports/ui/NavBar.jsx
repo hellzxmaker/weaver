@@ -10,7 +10,7 @@ import FlatButton from 'material-ui/FlatButton';
 import Person from 'material-ui/svg-icons/social/person';
 
 import CreateExperienceDialog from './CreateExperienceDialog.jsx';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import LoginDialog from './LoginDialog.jsx';
 
 export default class NavBar extends Component {
 
@@ -20,6 +20,7 @@ export default class NavBar extends Component {
     this.state = {
       showNewExperienceDialog: false,
       showMenuDialog: false,
+      showLoginDialog: false,
     };
   }
 
@@ -29,10 +30,22 @@ export default class NavBar extends Component {
     });
   }
 
+  toggleLoginDialog() {
+    this.setState({
+      showLoginDialog: !this.state.showLoginDialog,
+    });
+  }
+
   toggleMenuDialog() {
     this.setState({
       showMenuDialog: !this.state.showMenuDialog,
     });
+  }
+
+  logoutUser() {
+    this.toggleLoginDialog();
+    const userEmail = Meteor.user().emails[0].address;
+    Meteor.logout(userEmail);
   }
 
   renderIconMenu() {
@@ -43,11 +56,10 @@ export default class NavBar extends Component {
         targetOrigin={{horizontal: 'left', vertical: 'top'}}
         onTouchTap={ this.toggleMenuDialog.bind(this) }
       >
-        <MenuItem primaryText="Refresh" />
+        <MenuItem primaryText="Manage Goals" />
         <MenuItem primaryText="Send feedback" />
         <MenuItem primaryText="Settings" />
-        <MenuItem primaryText="Help" />
-        <MenuItem primaryText="Sign out" />
+        <MenuItem primaryText="Sign out" onTouchTap={ this.logoutUser.bind(this) } />
       </IconMenu>
     );
   }
@@ -74,18 +86,36 @@ export default class NavBar extends Component {
     }
   }
 
+  renderLoginDialog() {
+    return (
+      <LoginDialog/>
+    );
+  }
+
   renderAppBar() {
     return (
       <div id="app-bar">
-        <AppBar iconElementRight={ this.renderRightIconButton() }
-                iconElementLeft={ this.renderIconMenu() }
+        <AppBar
+          iconElementRight={ this.renderRightIconButton() }
+          iconElementLeft={ this.renderIconMenu() }
         />
       </div>
     );
   }
 
   renderNewExperienceDialog() {
-    if ( this.state.showNewExperienceDialog ) {
+    if (this.state.showLoginDialog ) {
+      return (
+        <div>
+          <div>
+            { this.renderAppBar() }
+          </div>
+          <div>
+            { this.renderLoginDialog() }
+          </div>
+        </div>
+      );
+    } else if ( this.state.showNewExperienceDialog ) {
       return (
       <div>
         <div>
