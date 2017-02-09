@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 
 
 import { Experiences } from '../api/experiences.js';
+import AddExperience from './AddExperience.jsx';
 
 import { MuiThemeProvider } from 'material-ui';
 import Dialog from 'material-ui/Dialog';
@@ -46,11 +47,22 @@ class App extends Component {
     );
   }
 
+  renderAddExperience() {
+    return (
+      <MuiThemeProvider>
+        <AddExperience />
+      </MuiThemeProvider>
+    );
+  }
+
   render() {
     return (
       <div id="main">
-        <div id="app-component">
+        <div id="navbar-component">
           { this.renderNavBar() }
+        </div>
+        <div id="add-exp-component">
+          { this.renderAddExperience() }
         </div>
         <div>
           <ul>

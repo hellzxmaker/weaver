@@ -22,7 +22,7 @@ export default class Experience extends Component {
       <MuiThemeProvider>
         <Card>
           <CardHeader
-            title={ this.props.experience.name }
+            title={ this.props.experience.description }
             subtitle={ this.props.experience.metric }
             actAsExpander={ true }
             showExpandableButton={ true }

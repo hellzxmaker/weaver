@@ -9,7 +9,6 @@ import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import Person from 'material-ui/svg-icons/social/person';
 
-import CreateExperienceDialog from './CreateExperienceDialog.jsx';
 import LoginDialog from './LoginDialog.jsx';
 
 export default class NavBar extends Component {
@@ -117,19 +116,6 @@ export default class NavBar extends Component {
           </div>
         </div>
       );
-    } else if ( this.state.showNewExperienceDialog ) {
-      return (
-      <div>
-        <div>
-          { this.renderAppBar() }
-        </div>
-        <div id="create-new-experience-dialog">
-          <CreateExperienceDialog
-            open={ this.state.showNewExperienceDialog }
-          />
-        </div>
-      </div>
-    );
     } else {
         return (
           <div>
