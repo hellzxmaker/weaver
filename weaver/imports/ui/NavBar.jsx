@@ -24,7 +24,6 @@ export default class NavBar extends Component {
   }
 
   toggleNewExperienceDialog() {
-    console.log('NavBar: toggleNewExperienceDialog + : ' + this.state.showNewExperienceDialog);
     this.setState({
       showNewExperienceDialog: !this.state.showNewExperienceDialog,
     });

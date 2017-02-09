@@ -23,6 +23,18 @@ export default class AddExperience extends Component {
     };
   }
 
+  onEnterSubmit(event) {
+    if (event.charCode == 13) {
+      event.preventDefault();
+      const description = this.state.experienceDescription;
+
+      Meteor.call('experiences.insert', description);
+
+      this.clearAddExperienceText();
+      this.toggleCreateSnackBar();
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const description = this.state.experienceDescription;
@@ -48,7 +60,12 @@ export default class AddExperience extends Component {
   renderAddExperienceBar() {
     return (
       <div id="add-experience-bar-container">
-        <IconButton style={{width: "5%"}} onTouchTap={ e => this.setState({ experienceDescription: '' }) } tooltip="Cancel">
+        <IconButton
+          style={{width: "5%"}}
+          onTouchTap={ e => this.setState({ experienceDescription: '' }) }
+          tooltip="Cancel"
+          touch={ true }
+        >
           <Clear hoverColor="red" />
         </IconButton>
         <TextField
@@ -56,8 +73,14 @@ export default class AddExperience extends Component {
           style={{width: "90%"}}
           value={ this.state.experienceDescription }
           onChange={ e => this.setState({ experienceDescription: e.target.value })}
+          onKeyPress={ this.onEnterSubmit.bind(this) }
         />
-      <IconButton style={{width: "5%"}} onTouchTap={ this.handleSubmit.bind(this) } tooltip="Save">
+      <IconButton
+        style={{width: "5%"}}
+        onTouchTap={ this.handleSubmit.bind(this) }
+        tooltip="Save"
+        touch={ true }
+      >
           <Done hoverColor="green" />
         </IconButton>
       </div>
