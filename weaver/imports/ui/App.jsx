@@ -61,9 +61,9 @@ class App extends Component {
         <div id="navbar-component">
           { this.renderNavBar() }
         </div>
-        <div id="add-exp-component">
+        <span id="add-exp-component">
           { this.renderAddExperience() }
-        </div>
+        </span>
         <div>
           <ul>
             { this.props.currentUser ? this.renderExperiences() : '' }

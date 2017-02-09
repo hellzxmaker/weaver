@@ -59,24 +59,16 @@ export default class AddExperience extends Component {
 
   renderAddExperienceBar() {
     return (
-      <div id="add-experience-bar-container">
-        <IconButton
-          style={{width: "5%"}}
-          onTouchTap={ e => this.setState({ experienceDescription: '' }) }
-          tooltip="Cancel"
-          touch={ true }
-        >
-          <Clear hoverColor="red" />
-        </IconButton>
+      <div id="add-experience-bar-container" display="inline-block">
         <TextField
           hintText="Add an experience here..."
-          style={{width: "90%"}}
+          style={{width: "90%", marginLeft: "40px"}}
           value={ this.state.experienceDescription }
           onChange={ e => this.setState({ experienceDescription: e.target.value })}
           onKeyPress={ this.onEnterSubmit.bind(this) }
         />
       <IconButton
-        style={{width: "5%"}}
+        style={{width: "auto"}}
         onTouchTap={ this.handleSubmit.bind(this) }
         tooltip="Save"
         touch={ true }
@@ -101,9 +93,9 @@ export default class AddExperience extends Component {
   render() {
     return (
       <div>
-        <div>
+        <span>
           { this.renderAddExperienceBar() }
-        </div>
+        </span>
         <div>
           { this.renderCreateSnackBar() }
         </div>
