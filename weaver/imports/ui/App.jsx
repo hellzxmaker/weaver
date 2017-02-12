@@ -8,6 +8,8 @@ import { Experiences } from '../api/experiences.js';
 import AddExperience from './AddExperience.jsx';
 
 import { MuiThemeProvider } from 'material-ui';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 import Dialog from 'material-ui/Dialog';
 import NavBar from './NavBar.jsx';
 import Experience from './Experience.jsx';
@@ -55,6 +57,16 @@ class App extends Component {
     );
   }
 
+  renderExperienceList() {
+    return(
+      <MuiThemeProvider>
+      <List>
+          { this.renderExperiences() }
+      </List>
+      </MuiThemeProvider>
+    );
+  }
+
   render() {
     return (
       <div id="main">
@@ -66,7 +78,7 @@ class App extends Component {
         </span>
         <div>
           <ul>
-            { this.props.currentUser ? this.renderExperiences() : '' }
+            { this.props.currentUser ? this.renderExperienceList() : '' }
           </ul>
         </div>
       </div>

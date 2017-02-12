@@ -4,6 +4,11 @@ import { Meteor } from 'meteor/meteor';
 import { MuiThemeProvider } from 'material-ui';
 import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider'
+import Checkbox from 'material-ui/Checkbox';
+import IconButton from 'material-ui/IconButton';
+import Delete from 'material-ui/svg-icons/action/delete';
 
 import { Experiences } from '../api/experiences.js';
 
@@ -20,31 +25,32 @@ export default class Experience extends Component {
   renderExperienceCard() {
     return (
       <MuiThemeProvider>
-        <Card>
-          <CardHeader
-            title={ this.props.experience.description }
-            subtitle={ this.props.experience.metric }
-            actAsExpander={ true }
-            showExpandableButton={ true }
-          />
-          <CardText expandable={ true }>
-            { this.props.experience.value + " " + this.props.experience.metric }
-          </CardText>
-          <CardActions expandable={ true } >
-              <FlatButton label="Delete" onTouchTap={ this.deleteExperience.bind(this) } />
-              <FlatButton label="Edit" />
-            </CardActions>
-          </Card>
+        <ListItem
+          primaryText={ this.props.experience.description }
+          leftCheckbox={ <Checkbox  /> }
+          rightIconButton={<IconButton touch={ true }><Delete onTouchTap={ this.deleteExperience.bind(this) } /></IconButton>}
+
+        />
+      </MuiThemeProvider>
+    );
+  }
+
+  renderDivider() {
+    return (
+      <MuiThemeProvider>
+        <Divider/>
       </MuiThemeProvider>
     );
   }
 
   render() {
     return (
-      <span id="experience-card">
+      <div>
         { this.renderExperienceCard() }
-      </span>
+        { this.renderDivider() }
+      </div>
     );
+
   }
 }
 
