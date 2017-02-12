@@ -65,7 +65,7 @@ export default class AddExperience extends Component {
           style={{width: "90%", marginLeft: "40px"}}
           value={ this.state.experienceDescription }
           onChange={ e => this.setState({ experienceDescription: e.target.value })}
-          onKeyPress={ this.onEnterSubmit.bind(this) }
+          onKeyPress={ !this.state.experienceDescription == '' ? this.onEnterSubmit.bind(this) : '' }
         />
       <IconButton
         style={{width: "auto"}}
