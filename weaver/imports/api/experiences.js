@@ -17,7 +17,6 @@ Meteor.methods({
       description,
       metric: 0,
       unit: '',
-      completed: false,
       createdAt: new Date(), // current time
       owner: Meteor.userId(), // _id of logged in user
       email: Meteor.user().emails[0].address, // email address of the user
