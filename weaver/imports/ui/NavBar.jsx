@@ -17,16 +17,9 @@ export default class NavBar extends Component {
     super(props);
 
     this.state = {
-      showNewExperienceDialog: false,
       showMenuDialog: false,
       showLoginDialog: false,
     };
-  }
-
-  toggleNewExperienceDialog() {
-    this.setState({
-      showNewExperienceDialog: !this.state.showNewExperienceDialog,
-    });
   }
 
   toggleLoginDialog() {
@@ -68,7 +61,6 @@ export default class NavBar extends Component {
         <IconButton
           label="New Experience"
           touch={ true }
-          onTouchTap={ this.toggleNewExperienceDialog.bind(this) }
         >
           <Create/>
         </IconButton>
@@ -103,7 +95,7 @@ export default class NavBar extends Component {
     );
   }
 
-  renderNewExperienceDialog() {
+  renderLogin() {
     if ( this.state.showLoginDialog ) {
       return (
         <div>
@@ -125,6 +117,6 @@ export default class NavBar extends Component {
   }
 
   render() {
-    return this.renderNewExperienceDialog();
+    return this.renderLogin();
   }
 }

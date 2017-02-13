@@ -28,4 +28,10 @@ Meteor.methods({
 
     Experiences.remove(experienceId);
   },
+  'experiences.setChecked'(experienceId, setChecked) {
+    check(experienceId, String);
+    check(setChecked, Boolean);
+
+    Experiences.update(experienceId, { $set: { checked: setChecked } });
+  }
 });

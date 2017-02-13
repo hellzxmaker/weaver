@@ -16,10 +16,15 @@ export default class Experience extends Component {
 
   constructor(props) {
     super(props);
+
   }
 
   deleteExperience() {
     Meteor.call('experiences.remove', this.props.experience._id);
+  }
+
+  checkExperience() {
+    Meteor.call('experiences.setChecked', this.props.experience._id, true);
   }
 
   renderExperienceCard() {
@@ -27,9 +32,8 @@ export default class Experience extends Component {
       <MuiThemeProvider>
         <ListItem
           primaryText={ this.props.experience.description }
-          leftCheckbox={ <Checkbox  /> }
-          rightIconButton={<IconButton touch={ true }><Delete onTouchTap={ this.deleteExperience.bind(this) } /></IconButton>}
-
+          leftCheckbox={ <Checkbox onCheck={ this.checkExperience.bind(this) } /> }
+          rightIconButton={<IconButton touch={ true }><Delete hoverColor="red" onTouchTap={ this.deleteExperience.bind(this) } /></IconButton>}
         />
       </MuiThemeProvider>
     );

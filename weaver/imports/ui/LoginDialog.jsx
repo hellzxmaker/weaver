@@ -22,6 +22,7 @@ export default class LoginDialog extends Component {
   }
 
   toggleLoginDialog() {
+    console.log('Toggle login dialog');
     this.setState({
       showLoginDialog: !this.state.showLoginDialog,
     });

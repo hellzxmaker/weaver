@@ -62,7 +62,7 @@ export default class AddExperience extends Component {
       <div id="add-experience-bar-container" display="inline-block">
         <TextField
           hintText="Add an experience here..."
-          style={{width: "90%", marginLeft: "40px"}}
+          style={{width: "90%", marginLeft: "40px", fontFamily: "Roboto"}}
           value={ this.state.experienceDescription }
           onChange={ e => this.setState({ experienceDescription: e.target.value })}
           onKeyPress={ !this.state.experienceDescription == '' ? this.onEnterSubmit.bind(this) : '' }
